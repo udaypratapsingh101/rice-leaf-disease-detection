@@ -1,0 +1,16 @@
+tensorflow
+numpy
+matplotlib
+scikit-learn
+pandas
+seaborn
+opencv-python
+Pillow
+lime
+scikit-image
+torch
+torchvision
+timm
+tqdm
+onnx
+onnxscript
