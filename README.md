@@ -195,3 +195,25 @@ EfficientNetV2-S  → To be added
 ResNet50          → 96.59%
 DeiT-B            → 98.86%
 DeiT-B + TTA      → 99.05%
+## 🚀 How to Run
+
+### Using Kaggle
+
+These notebooks are designed to run in the Kaggle environment because the dataset is accessed using Kaggle-specific input paths.
+
+1. Open the required notebook from the `notebook/` directory.
+2. Open or import the notebook in Kaggle.
+3. Add the Rice Leaf Disease dataset to the Kaggle notebook.
+4. Make sure the dataset is available at the expected Kaggle input path.
+5. Enable the required computing environment/accelerator.
+6. Run the notebook cells sequentially from top to bottom.
+7. Review the training, validation, confusion matrix, classification report, and prediction results.
+
+### Dataset Structure
+
+The notebooks expect the following dataset structure:
+
+```text
+RiceLeafsDisease/
+├── train/
+└── validation/
