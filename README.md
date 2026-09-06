@@ -132,17 +132,25 @@ The best-performing model can be compared with the baseline CNN and other archit
 
 ## 🏆 Results
 
-| Model | Best Validation Accuracy |
-|---|---:|
-| Baseline CNN | To be added |
-| DenseNet121 | To be added |
-| EfficientNetV2-S | To be added |
-| ResNet50 | To be added |
-| DeiT-B | 98.86% |
+The models were evaluated on the 528-image validation set.
 
-The DeiT-B experiment achieved a best validation accuracy of 98.86% during training.
+| Model | Validation Accuracy | F1-Score |
+|---|---:|---:|
+| Baseline CNN | 85.98% | — |
+| DenseNet121 | 93.75% | 94.00% |
+| EfficientNetV2-S | 95.64% | 95.59% |
+| ResNet50 | 96.59% | 97.00% |
+| DeiT-B | 98.86% | 98.86% |
 
----
+### Best Result
+
+**DeiT-B achieved the best standard validation accuracy of 98.86%.**
+
+With Test-Time Augmentation (TTA), the DeiT-B model achieved:
+
+**99.05% validation accuracy.**
+
+> Note: The 99.05% result is obtained using inference-time Test-Time Augmentation and is reported separately from the standard validation result.
 
 ## 🛠️ Technologies Used
 
