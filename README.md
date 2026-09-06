@@ -1,12 +1,12 @@
 # 🌾 Rice Leaf Disease Classification Using Deep Learning
 
-A deep learning project for classifying rice leaf images into six disease/health categories using multiple deep learning architectures.
+A deep learning project for automatic classification of rice leaf images into six disease/health categories using multiple deep learning architectures.
 
 ## 📌 Overview
 
-Rice plants are affected by several diseases that can reduce crop productivity. This project explores deep learning based image classification for automatic identification of rice leaf diseases.
+Rice leaf diseases can negatively affect crop health and productivity. This project explores deep learning-based image classification for identifying different rice leaf disease categories from leaf images.
 
-Five different deep learning architectures were implemented and compared:
+The project compares five deep learning approaches:
 
 - Baseline CNN
 - DenseNet121
@@ -18,21 +18,29 @@ The experiments were developed and executed using Kaggle notebooks.
 
 ---
 
+## 🎯 Objective
+
+The main objective of this project is to develop and compare deep learning models for multi-class rice leaf disease classification and identify the architecture that provides the best validation performance.
+
+---
+
 ## 📊 Dataset
 
 The project uses the Rice Leaf Disease dataset.
 
 ### Dataset Statistics
 
-- Number of classes: 6
-- Training images: 2,100
-- Validation images: 528
-- Total images: 2,628
-- Image size: 224 × 224
-- Training images per class: 350
-- Validation images per class: 88
+| Property | Value |
+|---|---:|
+| Number of classes | 6 |
+| Training images | 2,100 |
+| Validation images | 528 |
+| Total images | 2,628 |
+| Image size | 224 × 224 |
+| Training images per class | 350 |
+| Validation images per class | 88 |
 
-The dataset is approximately balanced across all six classes.
+The training and validation sets contain the same six classes and the training dataset is balanced across the classes.
 
 ### Classes
 
@@ -43,43 +51,46 @@ The dataset is approximately balanced across all six classes.
 5. Leaf Scald
 6. Narrow Brown Spot
 
-The dataset is not included in this repository. It is loaded from Kaggle during notebook execution.
+The dataset is not included in this GitHub repository. The notebooks load it from the Kaggle environment.
 
 ---
 
 ## 🧠 Models Implemented
 
-| Model | Description |
+| Model | Approach |
 |---|---|
-| Baseline CNN | Custom convolutional neural network used as a baseline |
-| DenseNet121 | Transfer learning based DenseNet architecture |
-| EfficientNetV2-S | EfficientNetV2 based image classification model |
-| ResNet50 | Transfer learning using ResNet50 |
-| DeiT-B | Data-efficient Vision Transformer |
+| Baseline CNN | Custom convolutional neural network used as the baseline |
+| DenseNet121 | Transfer learning with DenseNet121 followed by fine-tuning |
+| EfficientNetV2-S | Transfer learning and fine-tuning using EfficientNetV2-S |
+| ResNet50 | Transfer learning and fine-tuning using ResNet50 |
+| DeiT-B | Vision Transformer based approach with advanced training techniques |
 
 ---
 
 ## 🔬 Methodology
 
-The general workflow followed in the project is:
+The general workflow used in the experiments is:
 
 1. Dataset loading
-2. Dataset verification
-3. Image resizing
-4. Data augmentation
-5. Model construction
-6. Model training
-7. Validation
-8. Model checkpointing
-9. Performance evaluation
-10. Confusion matrix and classification analysis
-11. Single-image prediction
+2. Dataset and class verification
+3. Image resizing to 224 × 224
+4. Data preprocessing
+5. Data augmentation
+6. Model initialization
+7. Transfer learning where applicable
+8. Model training
+9. Fine-tuning
+10. Validation
+11. Best-model checkpointing
+12. Performance evaluation
+13. Confusion matrix and classification analysis
+14. Single-image prediction
 
-Different experiments use model-specific training strategies.
+Different models use model-specific training strategies.
 
 ### Data Augmentation
 
-The experiments include augmentation techniques such as:
+The experiments use augmentation techniques such as:
 
 - Horizontal flipping
 - Rotation
@@ -88,21 +99,64 @@ The experiments include augmentation techniques such as:
 - Contrast variation
 - Brightness variation
 
+The DenseNet121 experiment also includes MixUp-based training.
+
 ---
 
-## 📈 Evaluation
+## ⚙️ Training Techniques
 
-Model performance is evaluated using:
+Different experiments use different optimization and regularization strategies.
+
+The project includes techniques such as:
+
+- Transfer learning
+- Fine-tuning
+- Data augmentation
+- MixUp
+- MixUp/CutMix
+- Learning-rate scheduling
+- Model checkpointing
+- Adaptive learning-rate reduction
+- Mixed-precision training
+- Gradient clipping
+
+The DeiT-B experiment additionally uses a custom training and validation loop and inference-time Test-Time Augmentation (TTA).
+
+---
+
+## 📈 Evaluation Metrics
+
+The models are evaluated using:
 
 - Accuracy
 - Loss
-- Confusion Matrix
-- Classification Report
 - Precision
 - Recall
 - F1-score
+- Confusion Matrix
+- Classification Report
 
-The best-performing model can be compared with the baseline CNN and other architectures.
+---
+
+## 🏆 Results
+
+The verified validation performance currently reported by the notebooks is:
+
+| Model | Best Validation Accuracy |
+|---|---:|
+| Baseline CNN | 85.98% |
+| DenseNet121 | 93.75% |
+| EfficientNetV2-S | To be added |
+| ResNet50 | 96.59% |
+| DeiT-B | 98.86% |
+
+### Best Performing Model
+
+**DeiT-B achieved the highest standard validation accuracy of 98.86%.**
+
+The DeiT-B model was additionally evaluated using Test-Time Augmentation (TTA), where the validation accuracy increased to **99.05%**.
+
+> Note: 99.05% is the TTA-enhanced inference result and is reported separately from the standard DeiT-B validation accuracy of 98.86%.
 
 ---
 
@@ -130,58 +184,14 @@ The best-performing model can be compared with the baseline CNN and other archit
 
 ---
 
-## 🏆 Results
+## 📊 Model Comparison
 
-The models were evaluated on the 528-image validation set.
-
-| Model | Validation Accuracy | F1-Score |
-|---|---:|---:|
-| Baseline CNN | 85.98% | — |
-| DenseNet121 | 93.75% | 94.00% |
-| EfficientNetV2-S | 95.64% | 95.59% |
-| ResNet50 | 96.59% | 97.00% |
-| DeiT-B | 98.86% | 98.86% |
-
-### Best Result
-
-**DeiT-B achieved the best standard validation accuracy of 98.86%.**
-
-With Test-Time Augmentation (TTA), the DeiT-B model achieved:
-
-**99.05% validation accuracy.**
-
-> Note: The 99.05% result is obtained using inference-time Test-Time Augmentation and is reported separately from the standard validation result.
-
-## 🛠️ Technologies Used
-
-- Python
-- TensorFlow
-- Keras
-- PyTorch
-- Torchvision
-- timm
-- NumPy
-- Pandas
-- Matplotlib
-- Scikit-learn
-- OpenCV
-- LIME
-- Scikit-image
-
----
-
-## 📁 Project Structure
+The experiments show progressive improvement from the baseline CNN to more advanced architectures.
 
 ```text
-rice-leaf-disease-detection/
-│
-├── notebook/
-│   ├── 01_baseline_cnn.ipynb
-│   ├── 02_densenet121.ipynb
-│   ├── 03_efficientnetv2s.ipynb
-│   ├── 04_resnet50.ipynb
-│   └── 05_deit_b.ipynb
-│
-├── .gitignore
-├── requirements.txt
-└── README.md
+Baseline CNN      → 85.98%
+DenseNet121       → 93.75%
+EfficientNetV2-S  → To be added
+ResNet50          → 96.59%
+DeiT-B            → 98.86%
+DeiT-B + TTA      → 99.05%
