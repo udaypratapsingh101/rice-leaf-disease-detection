@@ -146,7 +146,7 @@ The verified validation performance currently reported by the notebooks is:
 |---|---:|
 | Baseline CNN | 85.98% |
 | DenseNet121 | 93.75% |
-| EfficientNetV2-S | To be added |
+| EfficientNetV2-S | ---- |
 | ResNet50 | 96.59% |
 | DeiT-B | 98.86% |
 
@@ -157,6 +157,11 @@ The verified validation performance currently reported by the notebooks is:
 The DeiT-B model was additionally evaluated using Test-Time Augmentation (TTA), where the validation accuracy increased to **99.05%**.
 
 > Note: 99.05% is the TTA-enhanced inference result and is reported separately from the standard DeiT-B validation accuracy of 98.86%.
+> ## 📌 Key Finding
+
+The experiments show a clear improvement over the custom baseline CNN.
+The DeiT-B model achieved the highest standard validation accuracy,
+while Test-Time Augmentation further improved its validation result.
 
 ---
 
