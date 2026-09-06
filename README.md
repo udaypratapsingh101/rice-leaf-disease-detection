@@ -1,3 +1,6 @@
+## 👨‍💻 Author
+
+**Uday Pratap Singh**
 # 🌾 Rice Leaf Disease Classification Using Deep Learning
 
 A deep learning project for automatic classification of rice leaf images into six disease/health categories using multiple deep learning architectures.
